@@ -14,11 +14,21 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
-            'full_name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email',
-            'phone_number' => 'required|numeric|digits_between:5,15',
+            'full_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
         ]);
+
+        // $contact = Contact::create([
+        //     'full_name' => $validated['full_name'],
+        //     'email' => $validated['email'],
+        //     'phone_number' => $validated['phone_number'],
+        // ]);
+
+        $contact = Contact::create($validated);
+
         $contact = new Contact();
         $contact->full_name = $validated['full_name'];
         $contact->email = $validated['email'];
@@ -26,6 +36,6 @@ class ContactController extends Controller
         $contact->save();
 
         // dd($request);
-        return redirect('/contact-us')->with('success', 'Thank you, we will contact you soon!');
+        return redirect()->route('contact-us.index')->with('success', 'Thank you, we will contact you soon!');
     }
 }

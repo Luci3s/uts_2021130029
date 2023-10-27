@@ -58,7 +58,7 @@
 
     <footer class="blog-footer">
         <p>
-            Copyright © {{ date('Y') }} <a href="/">yonasyehezkiel</a>.
+            Copyright © {{ date('Y') }} <a href="/">yonasyehezkiel</a> - <a href="{{ route('contact-us.index') }}">Contact Us</a>
         </p>
         <p>
             <a href="#">Back to top</a>
